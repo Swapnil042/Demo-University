@@ -33,4 +33,31 @@ router.post('/course', auth, async(req, res)=>{
     }
 })
 
+router.get('/course', auth, (req,res)=>{
+    Course.find({})
+    .populate("course_created_by_user_id course_updated_by_user_id", "first_name last_name")
+    .then(allPost=>{
+        res.status(200).json({allPost});
+    }).catch(err=>{
+        res.status(400).send(e);
+    })
+})
+
+router.patch('/course/:id', auth, async(req, res)=>{
+    const updates = Object.keys(req.body);
+    
+    try{
+        const course = await Course.findOne({_id: req.params.id});
+        if(!course){
+            return res.status(404).send();
+        }
+        updates.forEach(update => course[updates] = req.body[update]);
+        course.course_updated_by_user_id = req.user._id;
+        await course.save();
+        res.status(200).json({message: "Course Updated Successfully"});
+    }catch(e){
+        res.status(400).send();
+    }
+})
+
 module.exports = router;

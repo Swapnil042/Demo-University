@@ -5,10 +5,6 @@ const {ObjectId} = mongoose.Schema.Types;
 
 
 const courseSchema = new mongoose.Schema({
-    course_id:{
-        type: Number,
-        default: 1
-    },
     course_title:{
         type: String,
         required: true
