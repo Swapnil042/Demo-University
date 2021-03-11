@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs'); 
-const jwt = require('jsonwebtoken');
 
 const auth = require('../middleware/auth');
 const Course = require('../models/courses');
-const {jwt_secret} = require('../important');
 
 router.post('/course', auth, async(req, res)=>{
     const {course_title, course_description, course_price,course_rating} = req.body;

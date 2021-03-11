@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-const User = require('./users');
 const {ObjectId} = mongoose.Schema.Types;
 
+const User = require('./users');
 
 const courseSchema = new mongoose.Schema({
     course_title:{
@@ -32,9 +31,7 @@ const courseSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "User",
     }
-}, {timestamps: true,
-    autoIndex: true
-})
+}, {timestamps: true})
 
 const Course = mongoose.model("Courses", courseSchema);
 
