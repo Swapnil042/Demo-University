@@ -12,7 +12,8 @@ const studentSchema = new mongoose.Schema({
     },
     student_id:{
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     student_grade_level:{
         type: String,

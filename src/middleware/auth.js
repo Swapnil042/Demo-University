@@ -7,20 +7,23 @@ module.exports = (req,res,next)=>{
     const {authorization} = req.headers
     //authorization === Bearer ewefwegwrherhe
     if(!authorization){
-       return res.status(401).json({error:"Please authenticate"})
+       return res.status(401).json({error:"Please authenticate!!"})
     }
     const token = authorization.replace("Bearer ","")
     jwt.verify(token,jwt_secret,(err,payload)=>{
         if(err){
-            return res.status(401).json({error:"Please authenticate"})
+            return res.status(401).json({error:"Please authenticate!!"})
         }
         const {_id} = payload
         User.findById(_id)
         .then(userdata=>{
+            if(!userdata){
+                return res.status(401).json({error:"Please authenticate"});
+            }
             req.user = userdata
             next()
         }).catch(e=>{
-            res.status(401).json({error:"Please authenticate"})
+            res.status(401).json(e)
         })
     })
 }

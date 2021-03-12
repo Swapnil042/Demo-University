@@ -4,6 +4,11 @@ const {ObjectId} = mongoose.Schema.Types;
 const User = require('./users');
 
 const courseSchema = new mongoose.Schema({
+    course_id:{
+        type: Number,
+        required: true,
+        unique: true
+    },
     course_title:{
         type: String,
         required: true
