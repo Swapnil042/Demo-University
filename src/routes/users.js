@@ -61,6 +61,18 @@ router.get('/signin', async(req,res)=>{
     }
 });
 
+router.get('/user/:id', auth, async(req, res)=>{
+    try{
+        const user = await User.findOne({_id: req.params.id});
+        if(!user){
+            return res.status(404).send();
+        }
+        res.status(200).json({user});
+    }catch(e){
+        res.status(400).send(e);
+    }
+})
+
 router.get('/alluser',auth ,async(req,res)=>{
     try{
         const allUser = await User.find({});

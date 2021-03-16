@@ -54,6 +54,18 @@ router.get('/student', auth, (req,res)=>{
     })
 })
 
+router.get('/student/:id', auth, async(req, res)=>{
+    try{
+        const student = await Student.findOne({student_id: req.params.id});
+        if(!student){
+            return res.status(404).send();
+        }
+        res.status(200).json({student});
+    }catch(e){
+        res.status(400).send(e);
+    }
+})
+
 router.patch('/student/:id', auth, async(req, res)=>{
     const updates = Object.keys(req.body);
     
