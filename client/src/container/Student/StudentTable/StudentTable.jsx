@@ -20,7 +20,10 @@ const StudentTable=(props)=> {
             <TableCell>Student Id</TableCell>
             <TableCell>University</TableCell>
             <TableCell>Grade</TableCell>
+            <TableCell>Created By</TableCell>
+            <TableCell>Updated By</TableCell>
             <TableCell>Action</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -32,6 +35,10 @@ const StudentTable=(props)=> {
                 <TableCell align="left">{student.student_id}</TableCell>
                 <TableCell align="left">{student.student_university_name}</TableCell>
                 <TableCell align="left">{student.student_grade_level}</TableCell>
+                <TableCell align="left">{student.student_created_by_user_id.first_name} {student.student_created_by_user_id.last_name}</TableCell>
+                <TableCell align="left">
+                    {student.student_updated_by_user_id ? `${student.student_updated_by_user_id.first_name} ${student.student_updated_by_user_id.last_name}`: '-------'}
+                </TableCell>
                 <TableCell align="left">
                     <button className={classes.button}>Edit</button>
                 </TableCell>

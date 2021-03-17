@@ -19,6 +19,9 @@ const CourseTable=(props)=> {
             <TableCell>Course Description</TableCell>
             <TableCell>Course Price</TableCell>
             <TableCell>Course Rating</TableCell>
+            <TableCell>Created By</TableCell>
+            <TableCell>Updated By</TableCell>
+            <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -29,6 +32,10 @@ const CourseTable=(props)=> {
                 <TableCell align="left">{course.course_description}</TableCell>
                 <TableCell align="left">{course.course_price}</TableCell>
                 <TableCell align="left">{course.course_rating}</TableCell>
+                <TableCell align="left">{course.course_created_by_user_id.first_name} {course.course_created_by_user_id.last_name}</TableCell>
+                <TableCell align="left">
+                    {course.course_updated_by_user_id ? `${course.course_updated_by_user_id.first_name} ${course.course_updated_by_user_id.last_name}`: '-------'}
+                </TableCell>
                 <TableCell align="left">
                     <button className={classes.button}>Edit</button>
                 </TableCell>
