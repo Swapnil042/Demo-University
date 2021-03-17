@@ -38,7 +38,7 @@ router.post('/signup', async (req,res)=>{
     }
 });
 
-router.get('/signin', async(req,res)=>{
+router.post('/signin', async(req,res)=>{
     const {email, password} = req.body;
     if(!email || !password){
         return res.status(422).json({error: "Invalid Email or password"});
@@ -50,11 +50,14 @@ router.get('/signin', async(req,res)=>{
             return res.status(422).json({error: "Invalid Email or password!!"});
         }
         const doMatch = await bcrypt.compare(password, user.password);
-        if(doMatch){
-            const token = jwt.sign({_id: user._id}, jwt_secret);
-            const {first_name, last_name} = user;
-            res.status(200).json({token, user:{first_name, last_name}});
+        if(!doMatch){
+            return res.status(422).json({error: "Invalid Email or password!!"});
         }
+        
+        const token = jwt.sign({_id: user._id}, jwt_secret);
+        const {first_name, last_name} = user;
+        res.status(200).json({token, user:{first_name, last_name}});
+        
     }catch(e){
         res.status(400).send(e);
         console.log(e);

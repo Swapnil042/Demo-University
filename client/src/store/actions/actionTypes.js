@@ -1,0 +1,16 @@
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+
+export const LOAD_SUCCESS = 'LOAD_SUCCESS';
+export const LOAD_START = 'LOAD_START';
+export const LOAD_FAIL  = 'LOAD_FAIL'; 
+
+export const LOAD_STUDENT_SUCCESS = 'LOAD_STUDENT_SUCCESS';
+export const LOAD_STUDENT_START = 'LOAD_STUDENT_START';
+export const LOAD_STUDENT_FAIL  = 'LOAD_STUDENT_FAIL'; 
+
+export const LOAD_COURSE_SUCCESS = 'LOAD_COURSE_SUCCESS';
+export const LOAD_COURSE_START = 'LOAD_COURSE_START';
+export const LOAD_COURSE_FAIL  = 'LOAD_COURSE_FAIL'; 

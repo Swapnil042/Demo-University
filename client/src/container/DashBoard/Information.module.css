@@ -1,0 +1,14 @@
+.dash{
+    margin: auto;
+    max-width: 70%; 
+    border: 2px solid grey; 
+    box-shadow: 5px 5px grey;
+    border-radius: 5px; 
+    padding: 10px;
+}
+
+@media (min-width: 900px) and (min-height: 400px) {
+  .dash {
+      max-width: 900px;
+  }
+}

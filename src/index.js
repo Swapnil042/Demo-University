@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+var cors = require('cors')
+
 
 const {dbUrl} = require('./important');
 const userRouter = require('./routes/users');
@@ -20,7 +22,7 @@ mongoose.connection.on('connected',()=>{
 mongoose.connection.on('error',(err)=>{
     console.log("err connecting",err)
 });
-
+app.use(cors())
 app.use(express.json());
 app.use(userRouter);
 app.use(courseRouter);
